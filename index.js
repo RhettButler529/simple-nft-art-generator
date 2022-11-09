@@ -15,7 +15,7 @@ const template = `
 
 const takenNames = {};
 const takenFaces = {};
-let idx = 999;
+let idx = 10;
 
 function randInt(max) {
     return Math.floor(Math.random() * (max + 1));
@@ -72,12 +72,12 @@ function createImage(idx) {
 
     const face = [hair, eyes, mouth, nose, beard].join('');
 
-    if (face[takenFaces]) {
+    if (takenFaces[face]) {
         createImage();
     } else {
         const name = getRandomName()
         console.log(name)
-        face[takenFaces] = face;
+        takenFaces[face] = face;
 
         const final = template
             .replace('<!-- bg -->', getLayer(`bg${bg}`))
